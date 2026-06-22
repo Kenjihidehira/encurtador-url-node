@@ -1,0 +1,16 @@
+{
+  "name": "encurtador-url-node",
+  "version": "1.0.0",
+  "description": "Encurtador de URLs com Node.js, Express e painel web",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test"
+  },
+  "author": "Kenjihidehira",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
