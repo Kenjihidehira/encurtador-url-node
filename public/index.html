@@ -1,81 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Encurtador de URLs simples e rápido.">
-  <title>Encurta — Links mais simples</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <main class="app">
-    <header>
-      <a class="marca" href="/"><span>↗</span> encurta</a>
-      <span class="status"><i></i> Serviço online</span>
-    </header>
-
-    <section class="hero">
-      <p class="etiqueta">MENOS CARACTERES, MAIS CONEXÕES</p>
-      <h1>Links simples.<br><span>Resultados claros.</span></h1>
-      <p>Encurte endereços, compartilhe com facilidade e acompanhe os acessos.</p>
-    </section>
-
-    <section class="criador">
-      <form id="form-link">
-        <label>
-          URL original
-          <input id="url" type="url" placeholder="https://seusite.com/endereco-muito-longo" required>
-        </label>
-        <div class="linha">
-          <label>
-            Código personalizado <small>opcional</small>
-            <div class="codigo">
-              <span id="prefixo">localhost/</span>
-              <input id="codigo" type="text" minlength="3" maxlength="24" placeholder="meu-link">
-            </div>
-          </label>
-          <button type="submit">Encurtar link</button>
-        </div>
-      </form>
-      <div id="mensagem" role="alert"></div>
-    </section>
-
-    <section class="painel">
-      <div class="topo-painel">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LinkPulse Campaign Links</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <main class="layout">
+      <header class="hero">
         <div>
-          <h2>Seus links</h2>
-          <p id="resumo">Nenhum link criado</p>
+          <p class="eyebrow">Inteligência de links de marketing</p>
+          <h1>Transforme propostas, QRs e cliques de anúncios em dados rastreáveis de pipeline.</h1>
         </div>
-        <button id="atualizar" type="button">↻ Atualizar</button>
-      </div>
-      <div id="lista" class="lista"></div>
-      <div id="vazio" class="vazio">
-        <span>⌁</span>
-        <h3>Nenhum link por aqui</h3>
-        <p>Crie seu primeiro endereço curto acima.</p>
-      </div>
-    </section>
-  </main>
+        <form id="quickLink" class="quick-form">
+          <input name="slug" placeholder="oferta-cliente" required>
+          <input name="destination" placeholder="https://exemplo.com/oferta" required>
+          <button type="submit">Criar link</button>
+        </form>
+      </header>
 
-  <template id="modelo-link">
-    <article class="item-link">
-      <div class="icone">↗</div>
-      <div class="dados">
-        <a class="curto" target="_blank" rel="noopener"></a>
-        <span class="original"></span>
-      </div>
-      <div class="acessos">
-        <strong></strong>
-        <span>acessos</span>
-      </div>
-      <button class="copiar" type="button">Copiar</button>
-      <button class="excluir" type="button" aria-label="Excluir link">×</button>
-    </article>
-  </template>
+      <section id="kpis" class="kpis"></section>
 
-  <script src="app.js"></script>
-</body>
+      <section class="grid">
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Principais links</p>
+              <h2>Desempenho de campanhas</h2>
+            </div>
+          </div>
+          <div id="links" class="links"></div>
+        </article>
+
+        <article class="panel qr-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Ativo QR</p>
+              <h2 id="qrTitle">QR da campanha</h2>
+            </div>
+          </div>
+          <div id="qr" class="qr"></div>
+          <div id="channels" class="channels"></div>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Alertas de risco</p>
+            <h2>Links que precisam de atenção</h2>
+          </div>
+        </div>
+        <div id="risks" class="risks"></div>
+      </section>
+    </main>
+    <script src="/app.js" type="module"></script>
+  </body>
 </html>

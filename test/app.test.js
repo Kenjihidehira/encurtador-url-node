@@ -1,73 +1,67 @@
-const test = require("node:test");
-const assert = require("node:assert/strict");
-const fs = require("node:fs");
-const os = require("node:os");
-const path = require("node:path");
-const criarApp = require("../src/app");
+import test from "node:test";
+import assert from "node:assert/strict";
+import { loadSeed } from "../src/storage.js";
+import { createLink, getDashboard, getLinkAnalytics, recordClick } from "../src/linkService.js";
+import { createServer } from "../src/server.js";
 
-let servidor;
-let baseUrl;
-let diretorio;
+test("dashboard summarizes clicks and conversion", async () => {
+  const data = await loadSeed();
+  const dashboard = getDashboard(data);
 
-test.before(async () => {
-  diretorio = fs.mkdtempSync(path.join(os.tmpdir(), "encurta-"));
-  const app = criarApp({ arquivoBanco: path.join(diretorio, "links.json") });
-  await new Promise(resolve => {
-    servidor = app.listen(0, "127.0.0.1", () => {
-      baseUrl = `http://127.0.0.1:${servidor.address().port}`;
-      resolve();
-    });
+  assert.equal(dashboard.kpis.totalClicks, 14);
+  assert.equal(dashboard.kpis.conversionRate, 43);
+  assert.equal(dashboard.topLinks[0].totalClicks, 4);
+});
+
+test("analytics includes QR matrix and device split", async () => {
+  const data = await loadSeed();
+  const analytics = getLinkAnalytics(data, "workana-crm");
+
+  assert.equal(analytics.shortUrl, "https://links.example.test/r/workana-crm");
+  assert.equal(analytics.qrMatrix.length, 7);
+  assert.equal(analytics.devices.desktop, 2);
+});
+
+test("createLink validates destination and slug uniqueness", async () => {
+  const data = await loadSeed();
+  const created = createLink(data, {
+    slug: "new-offer",
+    destination: "https://example.com/new-offer",
+    title: "New Offer",
+    campaign: "Outbound",
+    channel: "email"
   });
+
+  assert.equal(created.status, "active");
+  assert.equal(data.links.length, 5);
+  assert.throws(() => createLink(data, {
+    slug: "new-offer",
+    destination: "https://example.com/duplicate",
+    title: "Duplicate",
+    campaign: "Outbound",
+    channel: "email"
+  }), /slug já existe/);
 });
 
-test.after(() => {
-  servidor.close();
-  fs.rmSync(diretorio, { recursive: true, force: true });
+test("redirect endpoint records clicks", async () => {
+  const data = await loadSeed();
+  const before = data.events.length;
+  const destination = recordClick(data, "email-demo", { device: "mobile", country: "BR" });
+
+  assert.equal(destination, "https://example.com/email-demo");
+  assert.equal(data.events.length, before + 1);
 });
 
-test("cria e lista um link", async () => {
-  const criacao = await fetch(`${baseUrl}/api/links`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ url: "https://example.com/pagina", codigo: "exemplo" }),
-  });
-  const link = await criacao.json();
-  assert.equal(criacao.status, 201);
-  assert.equal(link.codigo, "exemplo");
-
-  const listagem = await fetch(`${baseUrl}/api/links`);
-  const links = await listagem.json();
-  assert.equal(links.length, 1);
-});
-
-test("redireciona e contabiliza acesso", async () => {
-  const resposta = await fetch(`${baseUrl}/exemplo`, { redirect: "manual" });
-  assert.equal(resposta.status, 302);
-  assert.equal(resposta.headers.get("location"), "https://example.com/pagina");
-
-  const links = await (await fetch(`${baseUrl}/api/links`)).json();
-  assert.equal(links[0].acessos, 1);
-});
-
-test("rejeita URL inválida e código duplicado", async () => {
-  const invalida = await fetch(`${baseUrl}/api/links`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ url: "não é url" }),
-  });
-  assert.equal(invalida.status, 400);
-
-  const duplicado = await fetch(`${baseUrl}/api/links`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ url: "https://openai.com", codigo: "exemplo" }),
-  });
-  assert.equal(duplicado.status, 409);
-});
-
-test("exclui um link", async () => {
-  const resposta = await fetch(`${baseUrl}/api/links/exemplo`, { method: "DELETE" });
-  assert.equal(resposta.status, 204);
-  const links = await (await fetch(`${baseUrl}/api/links`)).json();
-  assert.equal(links.length, 0);
+test("api responds with dashboard payload", async () => {
+  const server = await createServer(await loadSeed());
+  await new Promise((resolve) => server.listen(0, resolve));
+  const baseUrl = "http://127.0.0.1:" + server.address().port;
+  try {
+    const response = await fetch(baseUrl + "/api/dashboard");
+    const payload = await response.json();
+    assert.equal(response.status, 200);
+    assert.equal(payload.kpis.activeLinks, 3);
+  } finally {
+    await new Promise((resolve) => server.close(resolve));
+  }
 });

@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "generatedAt": "2026-07-08T16:20:00.000Z",
+    "baseUrl": "https://links.example.test"
+  },
+  "links": [
+    {
+      "slug": "workana-crm",
+      "destination": "https://example.com/crm-proposal",
+      "title": "Landing page de proposta CRM",
+      "campaign": "Pipeline freelance",
+      "channel": "workana",
+      "utmSource": "workana",
+      "utmMedium": "proposal",
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "status": "active"
+    },
+    {
+      "slug": "store-qr",
+      "destination": "https://example.com/store-offer",
+      "title": "Cupom QR de varejo",
+      "campaign": "Campanha de loja julho",
+      "channel": "qr",
+      "utmSource": "poster",
+      "utmMedium": "offline",
+      "createdAt": "2026-07-02T09:00:00.000Z",
+      "status": "active"
+    },
+    {
+      "slug": "email-demo",
+      "destination": "https://example.com/email-demo",
+      "title": "Demo de automação por email",
+      "campaign": "Sequência de nutrição",
+      "channel": "email",
+      "utmSource": "newsletter",
+      "utmMedium": "email",
+      "createdAt": "2026-07-03T12:00:00.000Z",
+      "status": "active"
+    },
+    {
+      "slug": "zap-menu",
+      "destination": "https://example.com/whatsapp-menu",
+      "title": "Bot de menu WhatsApp",
+      "campaign": "Serviços locais",
+      "channel": "whatsapp",
+      "utmSource": "whatsapp",
+      "utmMedium": "message",
+      "createdAt": "2026-07-04T14:00:00.000Z",
+      "status": "paused"
+    }
+  ],
+  "events": [
+    { "slug": "workana-crm", "device": "desktop", "country": "BR", "converted": true, "createdAt": "2026-07-08T08:00:00.000Z" },
+    { "slug": "workana-crm", "device": "mobile", "country": "BR", "converted": false, "createdAt": "2026-07-08T08:12:00.000Z" },
+    { "slug": "workana-crm", "device": "desktop", "country": "US", "converted": true, "createdAt": "2026-07-08T09:05:00.000Z" },
+    { "slug": "workana-crm", "device": "mobile", "country": "BR", "converted": true, "createdAt": "2026-07-08T10:05:00.000Z" },
+    { "slug": "store-qr", "device": "mobile", "country": "BR", "converted": true, "createdAt": "2026-07-08T10:45:00.000Z" },
+    { "slug": "store-qr", "device": "mobile", "country": "BR", "converted": false, "createdAt": "2026-07-08T11:10:00.000Z" },
+    { "slug": "store-qr", "device": "mobile", "country": "BR", "converted": true, "createdAt": "2026-07-08T11:20:00.000Z" },
+    { "slug": "store-qr", "device": "tablet", "country": "BR", "converted": false, "createdAt": "2026-07-08T12:00:00.000Z" },
+    { "slug": "email-demo", "device": "desktop", "country": "BR", "converted": false, "createdAt": "2026-07-08T07:30:00.000Z" },
+    { "slug": "email-demo", "device": "desktop", "country": "BR", "converted": true, "createdAt": "2026-07-08T09:30:00.000Z" },
+    { "slug": "email-demo", "device": "mobile", "country": "AR", "converted": false, "createdAt": "2026-07-08T13:30:00.000Z" },
+    { "slug": "zap-menu", "device": "mobile", "country": "BR", "converted": false, "createdAt": "2026-07-08T10:15:00.000Z" },
+    { "slug": "zap-menu", "device": "mobile", "country": "BR", "converted": false, "createdAt": "2026-07-08T10:30:00.000Z" },
+    { "slug": "zap-menu", "device": "mobile", "country": "BR", "converted": false, "createdAt": "2026-07-08T10:35:00.000Z" }
+  ]
+}

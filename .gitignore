@@ -1,3 +1,5 @@
 node_modules/
 .env
-data/links.json
+coverage/
+.DS_Store
+*.log
