@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
-  <title id="title">Preview do dashboard LinkPulse Campaign Links</title>
-  <desc id="desc">Dashboard de analytics de links de campanha com KPIs, ranking de links, divisão por canal e preview QR.</desc>
+  <title id="title">Prévia do painel LinkPulse - Links de Campanha</title>
+  <desc id="desc">Painel de análise de links de campanha com KPIs, ranking de links, divisão por canal e prévia de QR.</desc>
   <rect width="1280" height="760" fill="#09130f"/>
   <rect x="42" y="38" width="1196" height="684" rx="24" fill="#101a18" stroke="#29433d"/>
-  <text x="78" y="94" fill="#f8fffc" font-family="Arial" font-size="34" font-weight="700">LinkPulse Campaign Links</text>
-  <text x="78" y="124" fill="#9ab8ad" font-family="Arial" font-size="16">Links curtos, analytics de campanha e ativos prontos para QR</text>
+  <text x="78" y="94" fill="#f8fffc" font-family="Arial" font-size="34" font-weight="700">LinkPulse - Links de Campanha</text>
+  <text x="78" y="124" fill="#9ab8ad" font-family="Arial" font-size="16">Links curtos, análises de campanha e ativos prontos para QR</text>
   <g transform="translate(78 164)">
     <rect width="250" height="122" rx="18" fill="#143129"/>
     <text x="22" y="38" fill="#9ab8ad" font-family="Arial" font-size="14">Cliques totais</text>
@@ -30,11 +30,11 @@
   <rect x="110" y="408" width="630" height="58" rx="14" fill="#18332d"/>
   <rect x="110" y="484" width="630" height="58" rx="14" fill="#18332d"/>
   <rect x="110" y="560" width="630" height="58" rx="14" fill="#18332d"/>
-  <text x="134" y="443" fill="#eafff6" font-family="Arial" font-size="15">workana-crm - Pipeline Freelance - 4 cliques</text>
+  <text x="134" y="443" fill="#eafff6" font-family="Arial" font-size="15">workana-crm - Funil Freelance - 4 cliques</text>
   <text x="134" y="519" fill="#eafff6" font-family="Arial" font-size="15">store-qr - Campanha de loja - 4 cliques</text>
   <text x="134" y="595" fill="#eafff6" font-family="Arial" font-size="15">email-demo - Sequência de nutrição - 3 cliques</text>
   <rect x="828" y="326" width="322" height="336" rx="22" fill="#121f1c" stroke="#29433d"/>
-  <text x="860" y="374" fill="#f8fffc" font-family="Arial" font-size="22" font-weight="700">Preview QR</text>
+  <text x="860" y="374" fill="#f8fffc" font-family="Arial" font-size="22" font-weight="700">Prévia do QR</text>
   <g transform="translate(880 412)" fill="#37e2ad">
     <rect x="0" y="0" width="24" height="24"/><rect x="36" y="0" width="24" height="24"/><rect x="72" y="0" width="24" height="24"/><rect x="144" y="0" width="24" height="24"/>
     <rect x="0" y="36" width="24" height="24"/><rect x="72" y="36" width="24" height="24"/><rect x="108" y="36" width="24" height="24"/>

@@ -1,7 +1,7 @@
 {
   "name": "encurtador-url-node",
   "version": "2.0.0",
-  "description": "LinkPulse Campaign Links - encurtador de URL com analytics de campanha, preview QR e API de redirecionamento.",
+  "description": "LinkPulse - encurtador de URL com análise de campanhas, prévia de QR e API de redirecionamento.",
   "type": "module",
   "scripts": {
     "start": "node src/server.js",

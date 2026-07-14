@@ -18,7 +18,7 @@ Retorna KPIs de campanha, principais links, divisão por canal e alertas de risc
 
 Filtros opcionais:
 
-- `campaign=Freelance Pipeline`
+- `campaign=Funil Freelance`
 - `channel=email`
 - `status=active`
 
